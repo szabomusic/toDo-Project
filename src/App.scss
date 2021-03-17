@@ -1,0 +1,318 @@
+*{
+  font-size: 16px;
+  color: whitesmoke;
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+body{
+  background: black;
+}
+#myVideo {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  opacity: 0.7;
+  }
+
+
+nav {
+  padding: 5px;
+  margin-bottom: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 400px;
+ margin: auto;
+ position: absolute;
+ top: 0;
+ left: 50%;
+ transform: translateX(-50%);
+ input{
+   background: none;
+   border: none;
+   border-bottom: 3px solid whitesmoke ;
+   outline: none;
+   &::placeholder{
+     color: whitesmoke;
+   }
+  } 
+  svg{
+    color: whitesmoke;
+  }
+}
+.loadingParent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .loadingContainer{
+  padding: 20px;
+  animation: heartBeat 2s linear infinite;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border:5px solid whitesmoke ;
+  overflow: hidden;
+
+  #mountainImg{
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    width: 600px;
+    z-index: 10;
+  }
+  #cloud1{
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    left: -400px;
+    animation: moveRight 5s linear infinite; 
+    z-index:11;
+  }
+  #cloud2{
+    width: 250px;
+    position: absolute;
+    top: 100px;
+    left: -400px;
+    animation: moveRight 6s linear infinite; 
+  }
+  #cloud3{
+    width: 150px;
+    position: absolute;
+    top: 170px;
+    left: -400px;
+    animation: moveRight 7s linear infinite; 
+  }
+  #cloud4{
+    width: 150px;
+    position: absolute;
+    top: 150px;
+    left: -400px;
+    animation: moveRight 8s linear infinite; 
+    z-index:11;
+  }
+  }
+}
+.loadingBorder{
+  padding: 20px;
+  animation: heartBeat 2s linear infinite, fadeOut 1.5s linear infinite;
+  position: absolute;
+  width: 510px;
+  height: 510px;
+  border-radius: 50%;
+  border:10px solid #1885eb ;
+  overflow: hidden;
+}
+@keyframes heartBeat{
+  0% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.8);
+  }
+}
+@keyframes moveRight{
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(1200px);
+  }
+}
+@keyframes fadeOut{
+  0% {
+    opacity:1;
+  }
+
+  50% {
+    opacity:0; 
+   }
+  100%{
+    opacity:1;
+  }
+}
+.toDoSection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 430px;
+  overflow: auto;
+  padding-bottom: 40px;
+
+
+  article {
+    margin-top:10px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 280px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    .toDoEditBtn{
+      .undoIcon{
+        position: absolute;
+        right: 30px;
+        top: 25px;
+      }
+      .saveIcon{
+        position: absolute;
+        right: 10px;
+        top: 25px;
+      }
+    }
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    input{
+      background: none;
+      border: none;
+      outline: none;
+      text-align: center;
+    }
+   .pencilIcon{
+    position: absolute;
+    right: 10px;
+    top: 25px;
+   }
+   .trashIcon{
+     position: absolute;
+     left: 10px;
+     top: 25px;
+   }
+  }
+}
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+section {
+  background: #00000042;
+  width: 300px;
+  height: 500px;
+  margin: 0 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 54px;
+  &::after{
+    content: '';
+    height: 70px;
+    width: 100%;
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+  }
+  .buttonContainer{
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    right: 10px;
+    z-index: 10;
+    top:25px
+  }
+  button{
+    background: none;
+    border: none;
+    color: whitesmoke;
+  }
+  .dashBoardInputContainer{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    h2{
+      margin-top:10px;
+    }
+    .dashboardHeader{
+      position: absolute;
+      top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+  }
+  .btnNewToDo{
+   margin-top: 20px;
+  }
+  .dashboardEdit{
+    margin-top: 10px;
+    border:none ;
+    background: none;
+    outline: none;
+    margin-bottom: 10px;
+    width: 100px;
+    text-align: center;
+   &::placeholder{
+     color: whitesmoke;
+   }
+  }
+  svg{
+    color: whitesmoke;
+  }
+  .trashIcon{
+    position: absolute;
+    top:25px;
+    left: 10px;
+    z-index: 10;
+    
+  }
+}
+.toDoContainer{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .toDoTitle{
+    border:none ;
+    border-bottom: 3px solid whitesmoke ;
+    background: none;
+    outline: none;
+    color: whitesmoke;
+   &::placeholder{
+     color: whitesmoke;
+   }
+  }
+  .toDoDesc{
+    border:none ;
+    border-bottom: 3px solid whitesmoke ;
+    background: none;
+    outline: none;
+    color: whitesmoke;
+   &::placeholder{
+     color: whitesmoke;
+   }
+  }
+  .btnToDoContainer{
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+  }
+}
+.btnContainer{
+  // margin-top:10px ;
+} 
+
