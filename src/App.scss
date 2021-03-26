@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,400&display=swap');
+$primaryColor:whitesmoke;
+
+
 *{
   font-size: 16px;
-  color: whitesmoke;
+  color: $primaryColor;
   margin: 0;
   padding:0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 body{
   background: black;
@@ -23,26 +28,26 @@ body{
 nav {
   padding: 5px;
   margin-bottom: 20px;
- display: flex;
- justify-content: center;
- align-items: center;
- width: 400px;
- margin: auto;
- position: absolute;
- top: 0;
- left: 50%;
- transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
  input{
    background: none;
    border: none;
-   border-bottom: 3px solid whitesmoke ;
+   border-bottom: 3px solid $primaryColor ;
    outline: none;
    &::placeholder{
-     color: whitesmoke;
+     color: $primaryColor;
    }
   } 
   svg{
-    color: whitesmoke;
+    color: $primaryColor;
   }
 }
 .loadingParent{
@@ -58,7 +63,7 @@ nav {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  border:5px solid whitesmoke ;
+  border:5px solid $primaryColor ;
   overflow: hidden;
 
   #mountainImg{
@@ -179,6 +184,9 @@ nav {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      h3{
+        font-weight: 500;
+      }
     }
     input{
       background: none;
@@ -235,7 +243,7 @@ section {
   button{
     background: none;
     border: none;
-    color: whitesmoke;
+    color: $primaryColor;
   }
   .dashBoardInputContainer{
     padding-top: 15px;
@@ -252,6 +260,9 @@ section {
       display: flex;
       justify-content: center;
       gap: 10px;
+      h2{
+        font-weight: 500;
+      }
     }
     
   }
@@ -267,11 +278,11 @@ section {
     width: 100px;
     text-align: center;
    &::placeholder{
-     color: whitesmoke;
+     color: $primaryColor;
    }
   }
   svg{
-    color: whitesmoke;
+    color: $primaryColor;
   }
   .trashIcon{
     position: absolute;
@@ -288,22 +299,22 @@ section {
   align-items: center;
   .toDoTitle{
     border:none ;
-    border-bottom: 3px solid whitesmoke ;
+    border-bottom: 3px solid $primaryColor ;
     background: none;
     outline: none;
-    color: whitesmoke;
+    color: $primaryColor;
    &::placeholder{
-     color: whitesmoke;
+     color: $primaryColor;
    }
   }
   .toDoDesc{
     border:none ;
-    border-bottom: 3px solid whitesmoke ;
+    border-bottom: 3px solid $primaryColor ;
     background: none;
     outline: none;
-    color: whitesmoke;
+    color: $primaryColor;
    &::placeholder{
-     color: whitesmoke;
+     color: $primaryColor;
    }
   }
   .btnToDoContainer{

@@ -5,8 +5,9 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaSave } from "react-icons/fa";
+import Dashboard from "./Dashboard";
 
-const Todo = ({ todo, deleteTodo, updateTodo }) => {
+const Todo = ({ todo, deleteTodo, updateTodo, dragStart, dashboard }) => {
 
   const [ isEdited, setIsEdited ] = useState(false)
   const { reset: resetTitle, ...title } = useInput("")
@@ -24,7 +25,7 @@ const Todo = ({ todo, deleteTodo, updateTodo }) => {
   }
 
   return (
-    <article>
+    <article draggable='true' onDragStart={(e) => dragStart(e, dashboard.id, todo.id)}>
       <FaTrash className='trashIcon' onClick={() => deleteTodo(todo.id)}/> 
       { isEdited ?
         <motion.div>

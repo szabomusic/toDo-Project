@@ -8,7 +8,7 @@ import { FaSave } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
 
 
-const Dashboard = ({ dashboard, deleteDashboard, renameDashboard, addTodo, deleteTodo, updateTodo }) => {
+const Dashboard = ({ dashboard, deleteDashboard, renameDashboard, addTodo, deleteTodo, updateTodo, dragStart, dragOver, drop }) => {
 
   const [ isEdited , setIsEdited ] = useState(false)
   const { reset: resetDashBoard, ...dashboardTitle } =  useInput(dashboard.title)
@@ -47,7 +47,7 @@ const Dashboard = ({ dashboard, deleteDashboard, renameDashboard, addTodo, delet
   }
 
   return (
-    <section key={dashboard.id}>
+    <section onDrop={(e) => drop(e, dashboard.id)}  onDragOver={(e) => dragOver(e)} key={dashboard.id}>
       <div className='buttonContainer'>
        { isEdited ? <FaUndoAlt onClick={toggle}/> : <FaPencilAlt onClick={toggle}/> }
       { isEdited && <FaSave onClick={save}/>}</div>
@@ -64,7 +64,10 @@ const Dashboard = ({ dashboard, deleteDashboard, renameDashboard, addTodo, delet
           key={todo.id}
           todo={todo}
           deleteTodo={deleteTodoFromDashboard}
-          updateTodo={updateTodoInDashboard}/>
+          updateTodo={updateTodoInDashboard}
+          dragStart={dragStart}
+          dashboard={dashboard}
+          />
       ) }
       { todoFormShown ?
         <div className='toDoContainer'>

@@ -26,7 +26,6 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = () =>{
-      console.log('lefut');
       let fetchInit = {
           method: "POST",
           headers: {
@@ -87,6 +86,29 @@ useEffect(() => {
   const updateTodo = (dashboardId, todoId, title, desc) => {
     setDashboards(withUpdatedTodo(dashboards, dashboardId, todoId, title, desc))
   }
+    const createDroppedCard = (id, tempCard) => {
+      setDashboards((prevState) => {
+      return prevState.map((dashboard) => (dashboard.id === id ? { ...dashboard, todos: [...dashboard.todos, { ...tempCard }] } : dashboard));
+    });
+  };
+
+    const dragStart = (ev, id, idCard) => {
+    ev.dataTransfer.setData("text", `${id}, ${idCard}`);
+  };
+
+    function dragOver(ev) {
+    ev.preventDefault();
+  }
+
+    function drop(ev, id) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text").split(",");
+    let tempCard = dashboards.filter((dashboard) => dashboard.id == data[0])[0].todos.filter((todo) => todo.id == data[1])[0];
+    console.log(data[0])
+    console.log(data[1])
+    deleteTodo(parseInt(data[0]), parseInt(data[1]));
+    createDroppedCard(id, tempCard);
+  }
 
   return (
     <>
@@ -108,7 +130,11 @@ useEffect(() => {
             deleteDashboard={deleteDashboard}
             addTodo={addTodo}
             deleteTodo={deleteTodo}
-            updateTodo={updateTodo} />
+            updateTodo={updateTodo} 
+            dragStart={dragStart}
+            dragOver={dragOver}
+            drop={drop}
+            />
         ) }
       </main>
     </div>}
